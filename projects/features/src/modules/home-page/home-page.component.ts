@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 type Feature = {
@@ -16,7 +17,8 @@ type Activity = {
 @Component({
   selector: 'home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  imports: [CommonModule]
 })
 export class HomePageComponent {
 

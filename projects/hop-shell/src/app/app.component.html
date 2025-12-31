@@ -13,19 +13,21 @@
       </mat-list-item>
       <mat-divider></mat-divider>
   
-      @for (cat of nestedAppList(); track cat) {
-        <div mat-subheader>{{cat.section}}</div>
-        @for (app of cat.apps; track app) {
-           <!-- <a routerLink="/first-hop-feature"> -->
-             <mat-list-item (click)="sidenav.toggle()" [routerLink]="app.appRoute">
-              <a matListItemTitle [href]="app.appRoute">{{ app.appName }}</a>
-               <mat-icon matListItemIcon >{{app.icon}}</mat-icon>
-               <!-- <div matListItemTitle>{{app.appName}}</div> -->
-               <div matListItemLine>{{app.appDescription}}</div>
-             </mat-list-item>
-           <!-- </a> -->
+      @if(nestedAppList()) {
+        @for (cat of nestedAppList(); track cat) {
+          <div mat-subheader>{{cat.section}}</div>
+          @for (app of cat.apps; track app) {
+             <!-- <a routerLink="/first-hop-feature"> -->
+               <mat-list-item (click)="sidenav.toggle()" [routerLink]="app.appRoute">
+                <a matListItemTitle [href]="app.appRoute">{{ app.appName }}</a>
+                 <mat-icon matListItemIcon >{{app.icon}}</mat-icon>
+                 <!-- <div matListItemTitle>{{app.appName}}</div> -->
+                 <div matListItemLine>{{app.appDescription}}</div>
+               </mat-list-item>
+             <!-- </a> -->
+          }
+          <mat-divider></mat-divider>
         }
-        <mat-divider></mat-divider>
       }
 
     </mat-list>
@@ -43,7 +45,7 @@
         <mat-icon>more_vert</mat-icon>
       </button> -->
       <span class="semi-strong">
-        <a routerLink="/home" >HOP Web Home</a>
+        <a routerLink="/home" >HOP Home</a>
       </span>
       
     

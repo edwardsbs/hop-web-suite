@@ -51,8 +51,8 @@ mat-sidenav[position="end"] {
 }
 
 mat-list-item {
-  cursor: pointer;
-}
+  cursor: pointer !important;
+} 
 
 .mat-drawer-inner-container {
   border-radius: inherit;
