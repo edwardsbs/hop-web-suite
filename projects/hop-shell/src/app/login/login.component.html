@@ -1,0 +1,10 @@
+<div style="max-width:420px;margin:50px auto;padding:16px;border:1px solid #ccc;border-radius:12px;">
+      <h2>Login</h2>
+      <p>Use: admin/admin, editor/editor, viewer/viewer</p>
+
+      <ui-banner *ngIf="err()" kind="error" title="Login failed" [message]="err()!"></ui-banner>
+
+      <label>Username <input [(ngModel)]="u"></label><br><br>
+      <label>Password <input type="password" [(ngModel)]="p"></label><br><br>
+      <button (click)="go()">Login</button>
+    </div>

@@ -4,6 +4,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "features": [
+        "./projects/features/src/public-api.ts"
+      ]
+    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -21,5 +27,19 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/hop-shell/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/hop-shell/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/features/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/features/tsconfig.spec.json"
+    }
+  ]
 }
