@@ -1,0 +1,68 @@
+<mat-sidenav-container class="side-nav-container">
+
+  <mat-sidenav #sidenav mode="over" class="nav-sidebar">
+    <div class="nav-header">
+      <mat-icon>dialpad</mat-icon><span>HOP Web</span>
+    </div>
+    <mat-list>
+      <mat-list-item (click)="sidenav.toggle()">
+        <a matListItemTitle href="/home"  >Home</a>
+        <mat-icon matListItemIcon>home</mat-icon>
+        <!-- <div matListItemTitle>Home</div> -->
+        <div matListItemLine routerLink="/home">Back to the main screen</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+  
+      @if(nestedAppList()) {
+        @for (cat of nestedAppList(); track cat) {
+          <div mat-subheader>{{cat.section}}</div>
+          @for (app of cat.apps; track app) {
+             <!-- <a routerLink="/first-hop-feature"> -->
+               <mat-list-item (click)="sidenav.toggle()" [routerLink]="app.appRoute">
+                <a matListItemTitle [href]="app.appRoute">{{ app.appName }}</a>
+                 <mat-icon matListItemIcon >{{app.icon}}</mat-icon>
+                 <!-- <div matListItemTitle>{{app.appName}}</div> -->
+                 <div matListItemLine>{{app.appDescription}}</div>
+               </mat-list-item>
+             <!-- </a> -->
+          }
+          <mat-divider></mat-divider>
+        }
+      }
+
+    </mat-list>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    
+    <header class="shell-header">
+      <button matIconButton (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <button matIconButton aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button> -->
+      <span class="semi-strong">
+        <a routerLink="/home" >HOP Home</a>
+      </span>
+      
+    
+    </header>
+    
+    <main>
+
+      <router-outlet></router-outlet>
+        
+    </main>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+  
+    
+      
+    
