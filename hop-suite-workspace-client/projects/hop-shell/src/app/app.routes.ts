@@ -6,7 +6,7 @@ export const routes: Routes = [
         path: '',
         title: '',
         loadChildren: () =>
-        import('features').then(m => m.FEATURES_ROUTES)
+        import('features').then(m => m.FEATURES_ROUTES) //'features' path is set in the tsconfig.json file
     },
 ];
 

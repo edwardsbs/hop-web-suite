@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "paths": {
       "features": [
-        "./projects/features/src/public-api.ts"
+        "./projects/applications/src/public-api.ts"
       ]
     },
     "noImplicitOverride": true,
