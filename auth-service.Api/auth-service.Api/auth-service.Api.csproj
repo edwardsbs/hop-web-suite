@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>auth_service.Api</RootNamespace>
+    <UserSecretsId>9a3a21aa-c40a-4ce6-91c8-f764a9130091</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
