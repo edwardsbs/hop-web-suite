@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using auth_service.Api.Services.Auth;
-using auth_service.Api.Services.Auth.Dtos;
+﻿using auth_service.Api.Services.Auth;
 using auth_service.Api.Services.Auth.Data;
+using auth_service.Api.Services.Auth.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace auth_service.Api.Endpoints;
 
@@ -17,6 +19,16 @@ public static class AuthEndpoints
 
             var token = jwt.CreateToken(user.Username, user.Role);
             return Results.Ok(new LoginResponse(token, user.Username, user.Role));
+        });
+
+        app.MapGet("/api/auth/validate", [Authorize] (ClaimsPrincipal user) =>
+        {
+            return Results.Ok(new
+            {
+                name = user.Identity?.Name,
+                sub = user.FindFirstValue(ClaimTypes.NameIdentifier),
+                role = user.FindFirstValue(ClaimTypes.Role)
+            });
         });
 
         return app;

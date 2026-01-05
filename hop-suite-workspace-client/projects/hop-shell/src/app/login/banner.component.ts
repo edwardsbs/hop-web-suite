@@ -12,7 +12,7 @@ import { Component, Input } from '@angular/core';
     </div>
   `,
   styles: [`
-    .banner{ padding:12px; border-radius:10px; border:1px solid #ccc; }
+    .banner{ padding:12px; border-radius:10px; border:1px solid #ccc; margin-bottom: .5rem}
   `]
 })
 export class BannerComponent {

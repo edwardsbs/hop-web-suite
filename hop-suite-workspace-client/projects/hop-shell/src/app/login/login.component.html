@@ -2,7 +2,9 @@
       <h2>Login</h2>
       <p>Use: admin/admin, editor/editor, viewer/viewer</p>
 
-      <ui-banner *ngIf="err()" kind="error" title="Login failed" [message]="err()!"></ui-banner>
+      @if(err()) {
+        <ui-banner kind="error" title="Login failed" [message]="err()!"></ui-banner>
+      }
 
       <label>Username <input [(ngModel)]="u"></label><br><br>
       <label>Password <input type="password" [(ngModel)]="p"></label><br><br>
