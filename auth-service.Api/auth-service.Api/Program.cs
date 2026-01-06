@@ -79,6 +79,7 @@ app.UseCors("dev");
 app.UseAuthentication();
 app.UseAuthorization();
 
+//remove once user table is hooked up
 Seed.Run(app.Services.GetRequiredService<InMemoryStore>());
 
 app.MapAuthEndpoints();

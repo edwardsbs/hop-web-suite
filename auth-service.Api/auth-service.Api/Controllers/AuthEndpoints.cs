@@ -13,11 +13,22 @@ public static class AuthEndpoints
     {
         app.MapPost("/api/auth/login", ([FromBody] LoginRequest req, InMemoryStore store, JwtTokenService jwt) =>
         {
+            //replace this with actual User lookup
             var user = store.Users.SingleOrDefault(u => u.Username == req.Username);
+
+            //user lookup here
+            // --[code here]--
+            //
+
             if (user is null || user.Password != req.Password)
                 return Results.Unauthorized();
 
-            var token = jwt.CreateToken(user.Username, user.Role);
+            var permissions = new List<AppPermissionDto>();
+            permissions.Add(new AppPermissionDto { Feature="lock", PropertyName="can see", PropertyValue="true" });
+            permissions.Add(new AppPermissionDto { Feature="save new records", PropertyName="can see", PropertyValue="false" });
+            permissions.Add(new AppPermissionDto { Feature="edit existing records", PropertyName="can see", PropertyValue="true" });
+
+            var token = jwt.CreateToken(user.Username, user.Role, "any", permissions);
             return Results.Ok(new LoginResponse(token, user.Username, user.Role));
         });
 
